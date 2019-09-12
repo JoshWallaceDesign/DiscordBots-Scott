@@ -2,13 +2,11 @@ const Discord = require("discord.js");
 const client = new Discord.Client();
 const RichEmbed = require('discord.js');
 
-
-
-const TOKEN = 'NjIwNzE5Mjc3OTg4NzczOTMw.XXa37w.hFAZbfk_MgRE_ixmBcD8oOQyHmg'
+const { token, prefix } = require("./config.json");
 
 global.servers = {};
 
-//----------
+//-----------------
 //EMBEDS
 //-----------------
 //Timer
@@ -303,4 +301,4 @@ client.on('ready',function(){
 
 
 
-client.login(TOKEN);
+client.login(token);
