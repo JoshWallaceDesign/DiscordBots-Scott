@@ -263,24 +263,7 @@ client.on("message", message => {
     })
 //----------------------------------------------------------------
 
-client.on("message", message => {
-    if(message.content.toLowerCase() == "!" + "clearchat"){
-        if(message.member.roles.some(r => r.name === "Admin")){
-        async function purge() {
-            message.delete();
-
-                                
-            message.channel.bulkDelete(100)
-                .catch(error => message.channel.send(`Error: ${error}`));
-                
-        }
-
-        purge();
-
-    }}});
-    
-
-
+ 
 function nigger(){
     return (Math.floor(Math.random()* 2 ) == 0) ? 'Hey, thats racist' : 'Yall niggas need Jesus';
 }
