@@ -1,0 +1,20 @@
+{
+  "name": "scott",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "dependencies": {
+    "discord.js": "^11.5.1",
+    "discord.js-commando": "^0.10.0",
+    "ffmpeg-binaries": "^4.0.0",
+    "opusscript": "0.0.7",
+    "soundcloud-audio": "^1.4.0",
+    "ytdl-core": "^0.29.6"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC"
+}
