@@ -2,8 +2,6 @@ const Discord = require("discord.js");
 const client = new Discord.Client();
 const RichEmbed = require('discord.js');
 
-const { token, prefix } = require("./config.json");
-
 global.servers = {};
 
 //-----------------
@@ -301,4 +299,4 @@ client.on('ready',function(){
 
 
 
-client.login(token);
+client.login(process.env.TOKEN);
