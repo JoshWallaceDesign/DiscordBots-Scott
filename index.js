@@ -320,7 +320,7 @@ client.on('message', (message) => {
 client.on("message", message => {
     if(message.content.toLowerCase() == "!battle")
         {   
-        message.channel.send("Battle Music")
+        message.channel.send("!play https://www.youtube.com/watch?v=gqqrBUiZ_iE")
         }});
 
   //________________________________________________________________________
