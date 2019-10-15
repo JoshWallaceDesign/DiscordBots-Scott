@@ -317,6 +317,12 @@ client.on('message', (message) => {
   }
 });
 
+client.on("message", message => {
+    if(message.content.toLowerCase() == "!battle")
+        {   
+        message.channel.send("Battle Music")
+        }});
+
   //________________________________________________________________________
 
 client.on('ready',function(){
