@@ -248,13 +248,7 @@ client.on("message", message => {
     }
     })
 
-client.on("message", message => {
-        if(message.content.toLowerCase() == "!" + "remove")
-                let role = message.guild.roles.find(role=> role.name === "Participant")
-                 message.member.removeRole(role)
-                 message.reply("You've been removed from the list!");
-        
-    })
+
        
 client.on("message", message => {
     if(message.content.toLowerCase() == "!" + "list")
