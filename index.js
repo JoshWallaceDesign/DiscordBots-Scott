@@ -260,9 +260,8 @@ client.on("message", message => {
             title: `Participants | ${membersWithRole.size}`,
             description: (message.guild.roles.get(roleID).members.map(m=>m.displayName).join('\n'))
                     }});
-                      
-      }
-    })
+                      }
+    });
 //----------------------------------------------------------------
 
 
