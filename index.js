@@ -310,15 +310,7 @@ client.on("message", message => {
     
 });
 
-client.on("message", message => {
-    if(message.content.toLowerCase() == "!timerstop")
-    {
-        clearInterval(clock);
-        }
-    message.channel.send("Timer Stopped");
 
-});
-    
 
 
 //--------------------
