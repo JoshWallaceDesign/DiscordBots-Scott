@@ -195,7 +195,7 @@ client.on("message", message => {
 //--------------------
 //Playing a game :
 client.on("ready", () => {
-    let user = "I say the 3, yall say the 2 and the 1. In 3... 2.... 1...."
+    let user = "Made with ESH by STeaMie"
         client.user.setActivity(user)
   });
 
@@ -215,7 +215,7 @@ client.on('message', message => {
     if(message.content.toLowerCase() === '!' + 'help') {
         message.channel.send({embed: {
             color: 3447003,
-            description: "Here are the commands:\n```Coin Flip : !flip \nTimer : !timer 90, 60 or 30 \nPart in Tourney : !part \nList of Parts : !list \nEnd Tourney : !end```"
+            description: "Here are the commands:\n```Coin Flip : !flip \nTimer : !timer 90, 60 or 30```"
         }});
         
     }
