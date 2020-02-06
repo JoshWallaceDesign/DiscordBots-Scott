@@ -313,9 +313,11 @@ client.on("message", message => {
 client.on("message", message => {
     if(message.content.toLowerCase() == "!timerstop")
     {
-        message.reply("Timer Stopped")
-        clearInterval(clock)
-               
+        clearInterval(clock);
+        message.channel.send({embed :{
+            color: 15158332,
+            title: "Timer Stopped"
+        }})
     }
 });
     
