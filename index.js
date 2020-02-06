@@ -10,7 +10,63 @@ global.servers = {};
 //-----------------
 //Timer
 client.on("message", message => {
-    if(message.content.toLowerCase() == "!timer 90")
+    if(message.content.toLowerCase() == "!timer 180")
+    if(message.member.roles.some(r => r.name === "Timer"))
+    
+    {   
+        message.channel.send("180 SECONDS ON THE CLOCK")
+        let timer = 180;
+        const clock = setInterval(() => {
+            timer--;
+            console.log(timer);
+            if (timer == 180)
+            {
+                message.channel.send({embed :{
+                    color: 3066993,
+                    title: timer +  " Seconds Left"
+                }})
+            }
+            if(timer == 90)
+            {
+                message.channel.send({embed :{
+                    color: 3066993,
+                    title: timer +  " Seconds Left"
+                }})
+            }
+            if(timer == 60)
+            {
+                message.channel.send({embed :{
+                    color: 15105570,
+                    title: timer +  " Seconds Left"
+                }})
+            }
+            if(timer == 30)
+            {
+                message.channel.send({embed :{
+                    color: 15105570,
+                    title: timer +  " Seconds Left"
+                }})
+            }
+            if(timer == 10)
+            {
+                message.channel.send({embed :{
+                    color: 15158332,
+                    title: timer +  " Seconds Left"
+                }})
+            }
+            if(timer == 0)
+            {
+                clearInterval(clock);
+                message.channel.send({embed :{
+                    color: 15158332,
+                    title: "...TIME..."
+                }})
+            }
+        }, 1000) 
+      }
+    
+});
+    
     {   
         message.channel.send("90 SECONDS ON THE CLOCK")
         let timer = 90;
@@ -67,6 +123,7 @@ client.on("message", message => {
 
 client.on("message", message => {
     if(message.content.toLowerCase() == "!timer 60")
+    if(message.member.roles.some(r => r.name === "Timer"))
         {   
         message.channel.send("60 SECONDS ON THE CLOCK")
         let timer = 60;
@@ -129,7 +186,67 @@ client.on("message", message => {
 });
 
 client.on("message", message => {
+    if(message.content.toLowerCase() == "!timer 45")
+    if(message.member.roles.some(r => r.name === "Timer"))
+        {   
+        message.channel.send("45 SECONDS ON THE CLOCK")
+        let timer = 45;
+        const clock = setInterval(() => {
+            timer--;
+            console.log(timer);
+            if (timer == 45)
+            {
+                message.channel.send({embed :{
+                    color: 3066993,
+                    title: timer +  " Seconds Left"
+                }})
+            }
+            if(timer == 30)
+            {
+                message.channel.send({embed :{
+                    color: 3066993,
+                    title: timer +  " Seconds Left"
+                }})
+            }
+            if(timer == 20)
+            {
+                message.channel.send({embed :{
+                    color: 3066993,
+                    title: timer +  " Seconds Left"
+                }})
+            }
+            
+            if(timer == 10)
+            {
+                message.channel.send({embed :{
+                    color: 15105570,
+                    title: timer +  " Seconds Left"
+                }})
+            }
+            if(timer == 5)
+            {
+                message.channel.send({embed :{
+                    color: 15158332,
+                    title: timer +  " Seconds Left"
+                }})
+            }
+            if(timer == 0)
+            {
+                clearInterval(clock);
+                message.channel.send({embed :{
+                    color: 15158332,
+                    title: "...TIME..."
+                }})
+            }
+        }, 1000) 
+      }
+    
+});
+
+
+client.on("message", message => {
     if(message.content.toLowerCase() == "!timer 30")
+    if(message.member.roles.some(r => r.name === "Timer"))
         {   
         message.channel.send("30 SECONDS ON THE CLOCK")
         let timer = 30;
