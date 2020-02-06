@@ -222,8 +222,7 @@ client.on('message', message => {
 
 //!part function
 client.on("message", message => {
-    if(message.guild.id != "309374937355911168")
-    if(message.content.toLowerCase() == "!" + "part")
+        if(message.content.toLowerCase() == "!" + "part")
         if(message.member.roles.find(r => r.name === "Participant"))
         message.reply("You already have the Role!")
         else {
