@@ -194,7 +194,7 @@ client.on("message", message => {
 //--------------------
 //Playing a game :
 client.on("ready", () => {
-    let user = "I say the 3, yall say the 2 and the 1. In 3... 2.... 1...."
+    let user = "I say the 3, yall say the 2 and the 1. In 3... 2.... 1...."  
         client.user.setActivity(user)
   });
 
@@ -222,8 +222,9 @@ client.on('message', message => {
 
 //!part function
 client.on("message", message => {
+    if(message.guild.id != "309374937355911168")
     if(message.content.toLowerCase() == "!" + "part")
-      if(message.member.roles.find(r => r.name === "Participant"))
+        if(message.member.roles.find(r => r.name === "Participant"))
         message.reply("You already have the Role!")
         else {
         let role = message.guild.roles.find(role=> role.name === "Participant")
@@ -250,7 +251,8 @@ client.on("message", message => {
   
        
 client.on("message", message => {
-    if(message.content.toLowerCase() == "!" + "list"){
+    if(message.content.toLowerCase() == "!" + "list")
+        if(message.member.roles.some(r => r.name === "Judge")){
         let roleID = "433941835723964417";
         let membersWithRole = message.guild.roles.get(roleID).members;
         message.guild.roles.get(roleID).members.map(m=>m.displayName);
@@ -261,6 +263,9 @@ client.on("message", message => {
                     }});
                       
       }
+    else {
+        message.reply('Sorry, you dont have permission to do that!')
+    }
     })
 //----------------------------------------------------------------
 
