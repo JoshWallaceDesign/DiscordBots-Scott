@@ -66,7 +66,9 @@ client.on("message", message => {
       }
     
 });
-    
+client.on("message", message => {
+    if(message.content.toLowerCase() == "!timer 90")
+    if(message.member.roles.some(r => r.name === "Timer"))    
     {   
         message.channel.send("90 SECONDS ON THE CLOCK")
         let timer = 90;
