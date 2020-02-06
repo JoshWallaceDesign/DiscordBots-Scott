@@ -262,9 +262,6 @@ client.on("message", message => {
                     }});
                       
       }
-    else {
-        message.reply('Sorry, you dont have permission to do that!')
-    }
     })
 //----------------------------------------------------------------
 
