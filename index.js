@@ -9,6 +9,9 @@ global.servers = {};
 //EMBEDS
 //-----------------
 //Timer
+
+let clock;
+
 client.on("message", message => {
     if(message.content.toLowerCase() == "!timer 180")
     if(message.member.roles.some(r => r.name === "Timer"))
@@ -16,7 +19,7 @@ client.on("message", message => {
     {   
         message.channel.send("180 SECONDS ON THE CLOCK")
         let timer = 180;
-        const clock = setInterval(() => {
+        clock = setInterval(() => {
             timer--;
             console.log(timer);
             if (timer == 180)
@@ -72,7 +75,7 @@ client.on("message", message => {
     {   
         message.channel.send("90 SECONDS ON THE CLOCK")
         let timer = 90;
-        const clock = setInterval(() => {
+        clock = setInterval(() => {
             timer--;
             console.log(timer);
             if (timer == 60)
@@ -129,7 +132,7 @@ client.on("message", message => {
         {   
         message.channel.send("60 SECONDS ON THE CLOCK")
         let timer = 60;
-        const clock = setInterval(() => {
+        clock = setInterval(() => {
             timer--;
             console.log(timer);
             if (timer == 45)
@@ -193,7 +196,7 @@ client.on("message", message => {
         {   
         message.channel.send("45 SECONDS ON THE CLOCK")
         let timer = 45;
-        const clock = setInterval(() => {
+        clock = setInterval(() => {
             timer--;
             console.log(timer);
             if (timer == 45)
@@ -246,15 +249,19 @@ client.on("message", message => {
 });
 
 
+
 client.on("message", message => {
     if(message.content.toLowerCase() == "!timer 30")
     if(message.member.roles.some(r => r.name === "Timer"))
-        {   
+    
+    
+    {
         message.channel.send("30 SECONDS ON THE CLOCK")
         let timer = 30;
-        const clock = setInterval(() => {
+        clock = setInterval(() => {
             timer--;
             console.log(timer);
+                       
             if (timer == 30)
             {
                 message.channel.send({embed :{
@@ -307,10 +314,20 @@ client.on("message", message => {
             }
         }, 1000) 
       }
-    
-});
+    });
 
 
+    client.on("message", message => {
+        if(message.content.toLowerCase() == "!" + "timerstop")
+        {
+            clearInterval(clock);
+            message.channel.send({embed :{
+                color: 15158332,
+                title: "TIMER STOPPED"
+            }})
+        }
+            
+            }); 
 
 
 //--------------------
@@ -345,14 +362,14 @@ client.on('message', message => {
 //!part function
 client.on("message", message => {
     if(message.content.toLowerCase() == "!" + "part")
-      if(message.member.roles.find(r => r.name === "Participant"))
-        message.reply("You already have the Role!")
+      if(message.member.roles.find(r => r.name === "Participant")){
+        message.reply("You already have the Role!")}
         else {
         let role = message.guild.roles.find(role=> role.name === "Participant")
              message.member.addRole(role)
              message.reply("You've been added to the list!");
     }
-})
+});
 
 client.on("message", message => {
     if(message.content.toLowerCase() == "!" + "end")
@@ -367,7 +384,7 @@ client.on("message", message => {
       else {
         message.reply('Sorry, you dont have permission to do that!')
     }
-    })
+    });
 
 client.on("message", message => {
     if(message.content.toLowerCase() == "!" + "remove")
@@ -377,7 +394,7 @@ client.on("message", message => {
             message.reply("You've been removed from the list!");
 
     }
-    })
+    });
        
 client.on("message", message => {
     if(message.content.toLowerCase() == "!" + "list")
@@ -392,7 +409,7 @@ client.on("message", message => {
                     }});
                       
       }
-    })
+    });
 //----------------------------------------------------------------
 
 
