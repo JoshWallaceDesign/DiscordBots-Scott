@@ -417,13 +417,12 @@ client.on('message', message => {
     
        
         if(message.content.toLowerCase() == "!" + "quit") {
-            if(que.indexOf(message.author.username) === 1) {
+            
                
-            } else {
                 que.splice(que.indexOf(message.author.username), 1)
                 que2.splice(que.indexOf(message.author.username), 1)
                 ;
-            }
+            
         }
 
     
