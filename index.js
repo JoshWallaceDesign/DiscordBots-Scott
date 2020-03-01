@@ -570,5 +570,5 @@ client.on('ready',function(){
 
 
 
-client.login('NjIwNjA0NDU0NTE2OTQ5MDIw.XlqXUQ.shXBEVk7_umodTr14nli5xMWXDk');
+client.login(process.env.TOKEN);
 
