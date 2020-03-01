@@ -3,7 +3,7 @@ const client = new Discord.Client();
 const RichEmbed = require('discord.js');
 
 
-global.servers = {};
+
 
 //-----------------
 //EMBEDS
@@ -353,7 +353,7 @@ client.on('message', message => {
     if(message.content.toLowerCase() === '!' + 'help') {
         message.channel.send({embed: {
             color: 3447003,
-            description: "Here are the commands:\n```Coin Flip : !flip \nTimer : !timer 180, 90, 60, 45 or 30 \nStop Timer : !timerstop \nPart in Tounrey : !part \nQuit Tourney : !quit \nList of Parts : !list \nView Queue : !queue \nNext in Queue : !next \nEnd Tourney : !end```"
+            description: "Here are the commands:\n```Coin Flip : !flip \nTimer : !timer 180, 90, 60, 45 or 30 \nStop Timer : !timerstop \nPart in Tounrey : !part \nQuit Tourney : !quit \nView Queue : !queue \nNext in Queue : !next \nEnd Tourney : !end```"
         }});
         
     }
@@ -386,15 +386,7 @@ client.on("message", message => {
     }
     });
 
-client.on("message", message => {
-    if(message.content.toLowerCase() == "!" + "quit")
-    if(message.member.roles.find(r => r.name === "Participant")){
-            let role = message.guild.roles.find(role=> role.name === "Participant")
-            message.member.removeRole(role)
-            message.reply("You've been removed from the list!");
 
-    }
-    });
        
 
     
@@ -410,28 +402,46 @@ client.on('message', message => {
             } else {
                
             que.push(message.member.displayName);
-            que2.push(message.member.displayName);
+           
             
             }
         }
     
        
-         if(message.content.toLowerCase() == "!" + "quit") {
-            if(que.indexOf(message.author.username) === -1) {
-                message.reply('You are not in the Queue!!')
+        if(message.content.toLowerCase() == "!" + "quit") {
+            if(message.member.roles.find(r => r.name === "Participant")){
+                if(que.indexOf(message.author.username) === -1) {
+                    let role = message.guild.roles.find(role=> role.name === "Participant")
+                    message.member.removeRole(role)
+                    message.reply("You've been removed from the Queue!");
+                } else {
+                    if(que.indexOf(message.author.username) < 1){
+                        que.shift(que);
+                        let prfrmingnow = que[0];
+                        let nextpreformer = que[1];
+                        let role = message.guild.roles.find(role=> role.name === "Participant")
+                        message.member.removeRole(role)
+                        que.splice(que.indexOf(message.author.username), -1)
+                        message.reply("You've been removed from the list!");}
+                    
+                    else {
+    
+                
+                    let role = message.guild.roles.find(role=> role.name === "Participant")
+                    message.member.removeRole(role)
+                    que.splice(que.indexOf(message.author.username), 1)
+                    
+                    message.reply("You've been removed from the list!");}
+                }
+            
+            
+            
+            
+                
              } else {
-                 que.splice(que.indexOf(message.author.username), 1)
-                 message.reply("You Have been removed from the List");
-             }
-         
-             if(que2.indexOf(message.author.username) === -1) {
-                message.reply('You are not in the Queue!!')
-             } else {
-                 que2.splice(que2.indexOf(message.author.username), 1)
-                 message.reply("You Have been removed from the List");
-             }
-
-        }
+                message.reply("You are not in the Queue!");           
+             }}
+            
 
     
 
@@ -560,5 +570,5 @@ client.on('ready',function(){
 
 
 
-client.login(process.env.TOKEN);
+client.login('NjIwNjA0NDU0NTE2OTQ5MDIw.XlqXUQ.shXBEVk7_umodTr14nli5xMWXDk');
 
