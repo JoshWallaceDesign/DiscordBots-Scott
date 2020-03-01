@@ -353,7 +353,7 @@ client.on('message', message => {
     if(message.content.toLowerCase() === '!' + 'help') {
         message.channel.send({embed: {
             color: 3447003,
-            description: "Here are the commands:\n```Coin Flip : !flip \nTimer : !timer 180, 90, 60, 45 or 30 \nStop Timer : !timerstop```"
+            description: "Here are the commands:\n```Coin Flip : !flip \nTimer : !timer 180, 90, 60, 45 or 30 \nStop Timer : !timerstop \nPart in Tounrey : !part \nQuit Tourney : !quit \nList of Parts : !list \nView Queue : !queue \nNext in Queue : !next \nEnd Tourney : !end```"
         }});
         
     }
@@ -373,7 +373,7 @@ client.on("message", message => {
 
 client.on("message", message => {
     if(message.content.toLowerCase() == "!" + "end")
-    if(message.member.roles.some(r => r.name === "Judge")){
+    if(message.member.roles.some(r => r.name === "Host")){
         let role = message.guild.roles.find(role => role.name == 'Participant')
         message.guild.members.forEach(member => {
           if(!member.roles.find(t => t.name == 'Participant')) return;
@@ -387,7 +387,7 @@ client.on("message", message => {
     });
 
 client.on("message", message => {
-    if(message.content.toLowerCase() == "!" + "remove")
+    if(message.content.toLowerCase() == "!" + "quit")
     if(message.member.roles.find(r => r.name === "Participant")){
             let role = message.guild.roles.find(role=> role.name === "Participant")
             message.member.removeRole(role)
@@ -396,22 +396,141 @@ client.on("message", message => {
     }
     });
        
-client.on("message", message => {
-    if(message.content.toLowerCase() == "!" + "list")
-    if(message.member.roles.some(r => r.name === "Judge")){
-        let roleID = "433941835723964417";
-        let membersWithRole = message.guild.roles.get(roleID).members;
-        message.guild.roles.get(roleID).members.map(m=>m.displayName);
-                           message.channel.send({embed: {
-            color: 3447003,
-            title: `Participants | ${membersWithRole.size}`,
-            description: (message.guild.roles.get(roleID).members.map(m=>m.displayName).join('\n'))
-                    }});
-                      
-      }
-    });
-//----------------------------------------------------------------
 
+    
+    
+//----------------------------------------------------------------
+var que = [];
+var que2 = [];
+var partstart = [];
+client.on('message', message => {
+            if(message.content.toLowerCase() == "!" + "part") {
+                if(message.member.roles.find(r => r.name === "Participant")){
+                
+            } else {
+               
+            que.push(message.member.displayName);
+            que2.push(message.member.displayName);
+            
+            }
+        }
+    
+       
+        if(message.content.toLowerCase() == "!" + "quit") {
+            if(que.indexOf(message.author.username) === 1) {
+               
+            } else {
+                que.splice(que.indexOf(message.author.username), 1)
+                que2.splice(que.indexOf(message.author.username), 1)
+                ;
+            }
+        }
+
+    
+
+   
+            
+          if(message.content.toLowerCase() == "!" + "queue"){
+            {
+                if(que.length === 0) {
+                   message.reply('The Queue is empty, !part to join the Queue.')
+                } else {
+            let prfrmingnow = que[0];
+      
+              const Preformingembed = new Discord.RichEmbed()
+            .setTitle("Performing Now | "  +  prfrmingnow)
+            .setColor(0x00AE86);   
+
+            let nextpreformer = que[1];
+
+            const nextprfrmingembed = new Discord.RichEmbed()
+            .setTitle("Up Next | " + nextpreformer)
+            .setColor(3447003);
+
+            let msg = '';
+
+          const list = new Discord.RichEmbed()
+          .setTitle("List of Parts :")
+          for(let i = 0; i < que.length; i++) // loop
+          {
+             msg+= i + ' | ' + que[i] + ` ` + '\n'; // adds '.' and value of que[i] and adds a newline
+           list.setTitle("Queue | " +  que.length)
+          }
+          list.setDescription(msg)
+          .setColor(9936031)
+          
+              
+              message.channel.send(Preformingembed).then(()  =>
+              {
+                message.channel.send(nextprfrmingembed)
+               message.channel.send(list);
+              })            
+          }}}
+
+          if(message.content.toLowerCase() == "!" + "list"){
+            {
+                if(que2.length === 0) {
+                   message.reply('The List is empty, !part to join the List')
+                } else {
+            
+
+            let msg = '';
+
+          const list = new Discord.RichEmbed()
+          .setTitle("List of Parts :")
+          for(let i = 0; i < que2.length; i++) // loop
+          {
+             msg+= i + ' | ' + que2[i] + ` ` + '\n'; // adds '.' and value of que[i] and adds a newline
+           list.setTitle("Participants | " +  que2.length)
+          }
+          list.setDescription(msg)
+          .setColor(3447003)
+          
+              
+              
+               message.channel.send(list);
+                          
+          }}}
+
+          if(message.content.toLowerCase() == '!' + 'next')
+          if(message.member.roles.some(r => r.name === "Host"))
+          {
+            message.channel.send({embed :{
+                color: 15158332,
+                title: "Previous | "  +  que[0]
+            }})
+            que.shift(que);
+            let prfrmingnow = que[0];
+            let nextpreformer = que[1];
+            
+
+            const Preformingembed = new Discord.RichEmbed()
+                .setTitle("Performing Now | "  +  prfrmingnow)
+                .setColor(0x00AE86); 
+            const nextprfrmingembed = new Discord.RichEmbed()
+                .setTitle("Up Next | " + nextpreformer)
+                .setColor(3447003);
+            message.channel.send(Preformingembed).then(() =>
+            {
+               message.channel.send(nextprfrmingembed)
+            })
+        }
+   
+
+if(message.content.toLowerCase() == '!' + 'end')
+if(message.member.roles.some(r => r.name === "Host"))
+{
+    function empty() {
+        que.length = 0
+        que2.length = 0
+    }
+    empty();
+    
+}
+});
+
+
+//--------------------------
 
 function nigger(){
     return (Math.floor(Math.random()* 2 ) == 0) ? 'Hey, thats racist' : 'Yall niggas need Jesus';
