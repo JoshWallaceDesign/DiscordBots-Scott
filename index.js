@@ -416,13 +416,21 @@ client.on('message', message => {
         }
     
        
-        if(message.content.toLowerCase() == "!" + "quit") {
-            
-               
-                que.splice(que.indexOf(message.author.username), 1)
-                que2.splice(que.indexOf(message.author.username), 1)
-                ;
-            
+         if(message.content.toLowerCase() == "!" + "quit") {
+            if(que.indexOf(message.author.username) === -1) {
+                message.reply('You are not in the Queue!!')
+             } else {
+                 que.splice(que.indexOf(message.author.username), 1)
+                 message.reply("You Have been removed from the List");
+             }
+         
+             if(que2.indexOf(message.author.username) === -1) {
+                message.reply('You are not in the Queue!!')
+             } else {
+                 que2.splice(que2.indexOf(message.author.username), 1)
+                 message.reply("You Have been removed from the List");
+             }
+
         }
 
     
