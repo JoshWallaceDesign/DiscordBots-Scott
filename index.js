@@ -353,7 +353,7 @@ client.on('message', message => {
     if(message.content.toLowerCase() === '!' + 'help') {
         message.channel.send({embed: {
             color: 3447003,
-            description: "Here are the commands:\n```Coin Flip : !flip \nTimer : !timer 180, 90, 60, 45 or 30 \nStop Timer : !timerstop \nPart in Tounrey : !part \nQuit Tourney : !quit \nView Queue : !queue \nNext in Queue : !next \nEnd Tourney : !end```"
+            description: "Here are the commands:\n```Coin Flip : !flip \nTimer Commands (requires Timer role) \nTimer : !timer 180, 90, 60, 45 or 30 \nStop Timer (requires Timer role) : !timerstop \nList of Participants (requires Host role) : !list```"
         }});
         
     }
@@ -361,15 +361,65 @@ client.on('message', message => {
 
 //!part function
 client.on("message", message => {
-    if(message.content.toLowerCase() == "!" + "part")
+    if(message.content.toLowerCase() == "!" + "join")
       if(message.member.roles.find(r => r.name === "Participant")){
-        message.reply("You already have the Role!")}
+        }
         else {
         let role = message.guild.roles.find(role=> role.name === "Participant")
              message.member.addRole(role)
-             message.reply("You've been added to the list!");
+            
     }
 });
+
+client.on("message", message => {
+    if(message.content.toLowerCase() == "!" + "leave")
+    if(message.member.roles.find(r => r.name === "Participant")){
+            let role = message.guild.roles.find(role=> role.name === "Participant")
+            message.member.removeRole(role)
+           
+
+    }
+    });
+       
+client.on("message", message => {
+    if(message.content.toLowerCase() == "!" + "list"){
+    if (message.guild.id == '309374937355911168') {
+             
+    if(message.member.roles.some(r => r.name === "Host")){
+        let roleID = "433941835723964417";
+        let membersWithRole = message.guild.roles.get(roleID).members;
+        message.guild.roles.get(roleID).members.map(m=>m.displayName);
+                           message.channel.send({embed: {
+            color: 3447003,
+            title: `Participants | ${membersWithRole.size}`,
+            description: (message.guild.roles.get(roleID).members.map(m=>m.displayName).join('\n'))
+                    }});
+                      
+      }}
+    
+    else if (message.guild.id == '184921833756295168') {
+            if(message.member.roles.some(r => r.name === "Host")){
+                let roleID = "535945835251499038";
+                let membersWithRole = message.guild.roles.get(roleID).members;
+                message.guild.roles.get(roleID).members.map(m=>m.displayName);
+                                   message.channel.send({embed: {
+                    color: 3447003,
+                    title: `Participants | ${membersWithRole.size}`,
+                    description: (message.guild.roles.get(roleID).members.map(m=>m.displayName).join('\n'))
+                            }});
+                              
+              }
+
+    }
+
+    else {
+        message.reply('Sorry, this feature is not availible in this server!')
+    }
+
+
+
+}});
+
 
 client.on("message", message => {
     if(message.content.toLowerCase() == "!" + "end")
@@ -391,160 +441,7 @@ client.on("message", message => {
 
     
     
-//----------------------------------------------------------------
-var que = [];
-var que2 = [];
-var partstart = [];
-client.on('message', message => {
-            if(message.content.toLowerCase() == "!" + "part") {
-                if(message.member.roles.find(r => r.name === "Participant")){
-                
-            } else {
-               
-            que.push(message.member.displayName);
-           
-            
-            }
-        }
-    
-       
-        if(message.content.toLowerCase() == "!" + "quit") {
-            if(message.member.roles.find(r => r.name === "Participant")){
-                if(que.indexOf(message.author.username) === -1) {
-                    let role = message.guild.roles.find(role=> role.name === "Participant")
-                    message.member.removeRole(role)
-                    message.reply("You've been removed from the Queue!");
-                } else {
-                    if(que.indexOf(message.author.username) < 1){
-                        que.shift(que);
-                        let prfrmingnow = que[0];
-                        let nextpreformer = que[1];
-                        let role = message.guild.roles.find(role=> role.name === "Participant")
-                        message.member.removeRole(role)
-                        que.splice(que.indexOf(message.author.username), -1)
-                        message.reply("You've been removed from the list!");}
-                    
-                    else {
-    
-                
-                    let role = message.guild.roles.find(role=> role.name === "Participant")
-                    message.member.removeRole(role)
-                    que.splice(que.indexOf(message.author.username), 1)
-                    
-                    message.reply("You've been removed from the list!");}
-                }
-            
-            
-            
-            
-                
-             } else {
-                message.reply("You are not in the Queue!");           
-             }}
-            
 
-    
-
-   
-            
-          if(message.content.toLowerCase() == "!" + "queue"){
-            {
-                if(que.length === 0) {
-                   message.reply('The Queue is empty, !part to join the Queue.')
-                } else {
-            let prfrmingnow = que[0];
-      
-              const Preformingembed = new Discord.RichEmbed()
-            .setTitle("Performing Now | "  +  prfrmingnow)
-            .setColor(0x00AE86);   
-
-            let nextpreformer = que[1];
-
-            const nextprfrmingembed = new Discord.RichEmbed()
-            .setTitle("Up Next | " + nextpreformer)
-            .setColor(3447003);
-
-            let msg = '';
-
-          const list = new Discord.RichEmbed()
-          .setTitle("List of Parts :")
-          for(let i = 0; i < que.length; i++) // loop
-          {
-             msg+= i + ' | ' + que[i] + ` ` + '\n'; // adds '.' and value of que[i] and adds a newline
-           list.setTitle("Queue | " +  que.length)
-          }
-          list.setDescription(msg)
-          .setColor(9936031)
-          
-              
-              message.channel.send(Preformingembed).then(()  =>
-              {
-                message.channel.send(nextprfrmingembed)
-               message.channel.send(list);
-              })            
-          }}}
-
-          if(message.content.toLowerCase() == "!" + "list"){
-            {
-                if(que2.length === 0) {
-                   message.reply('The List is empty, !part to join the List')
-                } else {
-            
-
-            let msg = '';
-
-          const list = new Discord.RichEmbed()
-          .setTitle("List of Parts :")
-          for(let i = 0; i < que2.length; i++) // loop
-          {
-             msg+= i + ' | ' + que2[i] + ` ` + '\n'; // adds '.' and value of que[i] and adds a newline
-           list.setTitle("Participants | " +  que2.length)
-          }
-          list.setDescription(msg)
-          .setColor(3447003)
-          
-              
-              
-               message.channel.send(list);
-                          
-          }}}
-
-          if(message.content.toLowerCase() == '!' + 'next')
-          if(message.member.roles.some(r => r.name === "Host"))
-          {
-            message.channel.send({embed :{
-                color: 15158332,
-                title: "Previous | "  +  que[0]
-            }})
-            que.shift(que);
-            let prfrmingnow = que[0];
-            let nextpreformer = que[1];
-            
-
-            const Preformingembed = new Discord.RichEmbed()
-                .setTitle("Performing Now | "  +  prfrmingnow)
-                .setColor(0x00AE86); 
-            const nextprfrmingembed = new Discord.RichEmbed()
-                .setTitle("Up Next | " + nextpreformer)
-                .setColor(3447003);
-            message.channel.send(Preformingembed).then(() =>
-            {
-               message.channel.send(nextprfrmingembed)
-            })
-        }
-   
-
-if(message.content.toLowerCase() == '!' + 'end')
-if(message.member.roles.some(r => r.name === "Host"))
-{
-    function empty() {
-        que.length = 0
-        que2.length = 0
-    }
-    empty();
-    
-}
-});
 
 
 //--------------------------
@@ -571,4 +468,5 @@ client.on('ready',function(){
 
 
 client.login(process.env.TOKEN);
+
 
