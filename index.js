@@ -353,7 +353,7 @@ client.on('message', message => {
     if(message.content.toLowerCase() === '!' + 'help') {
         message.channel.send({embed: {
             color: 3447003,
-            description: "Here are the commands:\n```Coin Flip : !flip \nTimer : !timer 180, 90, 60, 45 or 30 \nStop Timer : !timerstop \nList of Participants : !list \nTimer commands require Timer role and List command requires Host role```"
+            description: "Here are the commands:\n```Coin Flip : !flip \nTimer : !timer 180, 90, 60, 45 or 30 \nStop Timer : !timerstop \nList of Participants : !list \nTimer commands require Timer role \nList command requires Host role```"
         }});
         
     }
