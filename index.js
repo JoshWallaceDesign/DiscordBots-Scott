@@ -349,6 +349,12 @@ client.on('message', message =>{
 });
 //------------------------------------------------------------------
 
+client.on("message", message => {
+    if(message.content.toLowerCase() == ";" + "join"){
+        message.reply('The prefix for Events has changed from ; to !, so please use !join to Part, !leave to Leave and !queue to see the Queue.')
+    }});
+
+
 client.on('message', message => {
     if(message.content.toLowerCase() === '!' + 'help') {
         message.channel.send({embed: {
