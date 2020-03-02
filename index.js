@@ -474,5 +474,3 @@ client.on('ready',function(){
 
 
 client.login(process.env.TOKEN);
-
-
