@@ -466,7 +466,7 @@ client.on('message', message =>{
 
 client.on('ready',function(){
         console.log("Ready");
-})
+});
 
 
 
