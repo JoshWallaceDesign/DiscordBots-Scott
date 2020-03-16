@@ -252,11 +252,10 @@ client.on("message", message => {
 
 client.on("message", message => {
     if(message.content.toLowerCase() == "!timer 30")
-    if(message.member.roles.some(r => r.name === "Timer")){
-
-    if(timer == 0)   
+    if(message.member.roles.some(r => r.name === "Timer"))
     
-    {
+    
+    {   clearInterval(clock);
         message.channel.send("30 SECONDS ON THE CLOCK")
         let timer = 30;
         clock = setInterval(() => {
@@ -305,7 +304,7 @@ client.on("message", message => {
                     title: timer +  " Seconds Left"
                 }})
             }
-            if(timer == 0)
+            if(timer  == 0)
             {
                 clearInterval(clock);
                 message.channel.send({embed :{
@@ -315,70 +314,7 @@ client.on("message", message => {
             }
         }, 1000) 
       }
-      else{clearInterval(clock);
-        message.channel.send("30 SECONDS ON THE CLOCK")
-        let timer = 30;
-        clock = setInterval(() => {
-            timer--;
-            console.log(timer);
-                       
-            if (timer == 30)
-            {
-                message.channel.send({embed :{
-                    color: 3066993,
-                    title: timer +  " Seconds Left"
-                }})
-            }
-            if(timer == 25)
-            {
-                message.channel.send({embed :{
-                    color: 3066993,
-                    title: timer +  " Seconds Left"
-                }})
-            }
-            if(timer == 20)
-            {
-                message.channel.send({embed :{
-                    color: 3066993,
-                    title: timer +  " Seconds Left"
-                }})
-            }
-            if(timer == 15)
-            {
-                message.channel.send({embed :{
-                    color: 15105570,
-                    title: timer +  " Seconds Left"
-                }})
-            }
-            if(timer == 10)
-            {
-                message.channel.send({embed :{
-                    color: 15105570,
-                    title: timer +  " Seconds Left"
-                }})
-            }
-            if(timer == 5)
-            {
-                message.channel.send({embed :{
-                    color: 15158332,
-                    title: timer +  " Seconds Left"
-                }})
-            }
-            if(timer == 0)
-            {
-                clearInterval(clock);
-                message.channel.send({embed :{
-                    color: 15158332,
-                    title: "...TIME..."
-                }})
-            }
-        }, 1000) 
-      } 
-
-     
-    
-    }
-});
+    });
 
 
     client.on("message", message => {
