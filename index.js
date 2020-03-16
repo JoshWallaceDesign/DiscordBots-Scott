@@ -304,7 +304,7 @@ client.on("message", message => {
                     title: timer +  " Seconds Left"
                 }})
             }
-            if(timer == 0)
+            if(timer < 1)
             {
                 clearInterval(clock);
                 message.channel.send({embed :{
