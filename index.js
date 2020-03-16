@@ -16,7 +16,7 @@ client.on("message", message => {
     if(message.content.toLowerCase() == "!timer 180")
     if(message.member.roles.some(r => r.name === "Timer"))
     
-    {   
+    {   clearInterval(clock);
         message.channel.send("180 SECONDS ON THE CLOCK")
         let timer = 180;
         clock = setInterval(() => {
@@ -72,7 +72,7 @@ client.on("message", message => {
 client.on("message", message => {
     if(message.content.toLowerCase() == "!timer 90")
     if(message.member.roles.some(r => r.name === "Timer"))    
-    {   
+    {   clearInterval(clock);
         message.channel.send("90 SECONDS ON THE CLOCK")
         let timer = 90;
         clock = setInterval(() => {
@@ -129,7 +129,7 @@ client.on("message", message => {
 client.on("message", message => {
     if(message.content.toLowerCase() == "!timer 60")
     if(message.member.roles.some(r => r.name === "Timer"))
-        {   
+        {   clearInterval(clock);
         message.channel.send("60 SECONDS ON THE CLOCK")
         let timer = 60;
         clock = setInterval(() => {
@@ -193,7 +193,7 @@ client.on("message", message => {
 client.on("message", message => {
     if(message.content.toLowerCase() == "!timer 45")
     if(message.member.roles.some(r => r.name === "Timer"))
-        {   
+        {   clearInterval(clock);
         message.channel.send("45 SECONDS ON THE CLOCK")
         let timer = 45;
         clock = setInterval(() => {
