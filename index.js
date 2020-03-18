@@ -485,7 +485,7 @@ client.on('message', message => {
           if(message.content.toLowerCase() == "!" + "queue"){
             {
                 if(que.length === 0) {
-                   message.reply('The Queue is empty, !part to join the Queue.')
+                   message.reply('The Queue is empty, !join to join the Queue.')
                 } else {
             let prfrmingnow = que[0];
       
