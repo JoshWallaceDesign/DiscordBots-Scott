@@ -349,24 +349,43 @@ client.on('message', message =>{
 });
 //------------------------------------------------------------------
 
-client.on("message", message => {
-    if(message.content.toLowerCase() == ";" + "join"){
-        message.reply('The prefix for Events has changed from ; to !, so please use !join to Part, !leave to Leave and !queue to see the Queue.')
-    }});
-
 
 client.on('message', message => {
     if(message.content.toLowerCase() === '!' + 'help') {
         message.channel.send({embed: {
             color: 3447003,
-            description: "Here are the commands:\n```Coin Flip : !flip \nTimer : !timer 180, 90, 60, 45 or 30 \nStop Timer : !timerstop \nList of Participants : !list \nTimer commands require Timer role \nList command requires Host role```"
+            description: "Here are the commands:\n```Coin Flip : !flip \nTimer : !timer 180, 90, 60, 45 or 30 \nStop Timer : !timerstop \nTimer commands require Timer role```"
         }});
         
     }
 });
 
-//!part function
+//Tournament -------------------------------------------------------------
+if (message.guild.id == '184921833756295168') {
+
+var unlocked = [];
 client.on("message", message => {
+if(message.content.toLowerCase() == '!' + 'lock')
+    if(message.member.roles.some(r => r.name === "Host"))
+    {
+        unlocked = false;
+        message.reply('Queue is now locked!')
+    }    else {
+        message.reply('Sorry, you dont have permission to do that!')
+    }});
+
+    client.on("message", message => {
+        if(message.content.toLowerCase() == '!' + 'open')
+            if(message.member.roles.some(r => r.name === "Host"))
+            {
+                unlocked = true;
+                message.reply('Queue is now open!')
+            }    else {
+                message.reply('Sorry, you dont have permission to do that!')
+            }});
+
+client.on("message", message => {
+    if(unlocked){
     if(message.content.toLowerCase() == "!" + "join")
       if(message.member.roles.find(r => r.name === "Participant")){
         }
@@ -375,6 +394,9 @@ client.on("message", message => {
              message.member.addRole(role)
             
     }
+} else {
+    message.reply('Sorry, the Queue has been locked!')
+}
 });
 
 client.on("message", message => {
@@ -402,7 +424,7 @@ client.on("message", message => {
                     }});
                       
       }}
-    
+      
     else if (message.guild.id == '184921833756295168') {
             if(message.member.roles.some(r => r.name === "Host")){
                 let roleID = "535945835251499038";
@@ -434,6 +456,8 @@ client.on("message", message => {
         message.guild.members.forEach(member => {
           if(!member.roles.find(t => t.name == 'Participant')) return;
           member.removeRole(role);
+          member.removeRole(role);
+          member.removeRole(role);
                                 })
          message.channel.send("Tournament is Over, all Participants removed!");
       }
@@ -441,20 +465,12 @@ client.on("message", message => {
         message.reply('Sorry, you dont have permission to do that!')
     }
     });
+   
 
-
-       
-
-    
-    
-
-
-
-//--------------------------
 var que = [];
-
 var partstart = [];
 client.on('message', message => {
+    if(unlocked){
             if(message.content.toLowerCase() == "!" + "join") {
                 if(message.member.roles.find(r => r.name === "Participant")){
                 
@@ -465,11 +481,11 @@ client.on('message', message => {
             
             
             }
-        }
+        }}
     
        
         if(message.content.toLowerCase() == "!" + "quitevent") {
-            if(que.indexOf(message.author.username) === 1) {
+            if(que.indexOf(message.author.username) === -1) {
                
             } else {
                 que.splice(que.indexOf(message.author.username), 1)
@@ -557,21 +573,8 @@ if(message.member.roles.some(r => r.name === "Host"))
 }
 });
 
-
-//--------------------------
-
-
-function nigger(){
-    return (Math.floor(Math.random()* 2 ) == 0) ? 'Hey, thats racist' : 'Yall niggas need Jesus';
-}
-client.on('message', message =>{
-   if(message.content.toLowerCase() == '!' + 'nigger'){
-       message.channel.send(" " + nigger() + "!");
-   }
-});
-
-
-  //________________________________________________________________________
+};
+///-----------------------------------------------------------------
 
 client.on('ready',function(){
         console.log("Ready");
