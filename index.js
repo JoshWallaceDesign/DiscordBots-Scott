@@ -361,7 +361,7 @@ client.on('message', message => {
 });
 
 //Tournament -------------------------------------------------------------
-if (message.guild.id == '184921833756295168') {
+
 
 var unlocked = [];
 client.on("message", message => {
@@ -573,7 +573,7 @@ if(message.member.roles.some(r => r.name === "Host"))
 }
 });
 
-};
+
 ///-----------------------------------------------------------------
 
 client.on('ready',function(){
