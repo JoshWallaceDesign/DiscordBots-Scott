@@ -381,12 +381,12 @@ if(message.content.toLowerCase() == '!' + 'lock')
                 unlocked = true;
                 message.reply('Queue is now open!')
             }    else {
-                message.reply('Sorry, you dont have permission to do that!')
+                message.reply('Sorry, you dont have permission to do that!');
             }});
 
 client.on("message", message => {
-    if(unlocked){
-    if(message.content.toLowerCase() == "!" + "join")
+        if(message.content.toLowerCase() == "!" + "join")
+        if(unlocked){
       if(message.member.roles.find(r => r.name === "Participant")){
         }
         else {
@@ -395,7 +395,7 @@ client.on("message", message => {
             
     }
 } else {
-    message.reply('Sorry, the Queue has been locked!')
+    message.reply('Sorry, the Queue has been locked!');
 }
 });
 
@@ -470,8 +470,8 @@ client.on("message", message => {
 var que = [];
 var partstart = [];
 client.on('message', message => {
-    if(unlocked){
-            if(message.content.toLowerCase() == "!" + "join") {
+                if(message.content.toLowerCase() == "!" + "join") {
+                if(unlocked){
                 if(message.member.roles.find(r => r.name === "Participant")){
                 
             } else {
