@@ -580,7 +580,7 @@ if(message.member.roles.some(r => r.name === "Host"))
         que.length = 0
             }
     empty();
-    
+    message.channel.send("Tournament is Over, all Participants removed!");
 }
 });
 
