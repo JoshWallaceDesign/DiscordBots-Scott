@@ -364,6 +364,20 @@ client.on('message', message => {
 
 
 var unlocked = [];
+
+client.on("message", message => {
+if(message.content.toLowerCase() == '?' + 'start')
+if(message.member.roles.some(r => r.name === "Host"))
+{
+    function empty() {
+        que.length = 0
+            }
+    empty();
+    
+    unlocked = true;
+    message.reply('The Queue is now open, type !join to part!')
+}});
+
 client.on("message", message => {
 if(message.content.toLowerCase() == '!' + 'lock')
     if(message.member.roles.some(r => r.name === "Host"))
@@ -450,15 +464,13 @@ client.on("message", message => {
 
 
 client.on("message", message => {
-    if(message.content.toLowerCase() == "!" + "end")
+    if(message.content.toLowerCase() == "?" + "endthedamntournament")
     if(message.member.roles.some(r => r.name === "Host")){
         let role = message.guild.roles.find(role => role.name == 'Participant')
         message.guild.members.forEach(member => {
           if(!member.roles.find(t => t.name == 'Participant')) return;
           member.removeRole(role);
-          member.removeRole(role);
-          member.removeRole(role);
-                                })
+                                          })
          message.channel.send("Tournament is Over, all Participants removed!");
       }
       else {
@@ -486,11 +498,10 @@ client.on('message', message => {
        
         if(message.content.toLowerCase() == "!" + "quitevent") {
             if(que.indexOf(message.author.username) === -1) {
-               
+               message.reply('You are no in the list to Quit!!')
             } else {
                 que.splice(que.indexOf(message.author.username), 1)
-                
-                ;
+                message.reply("You Have been removed from the List");
             }
         }
 
@@ -562,7 +573,7 @@ client.on('message', message => {
         }
    
 
-if(message.content.toLowerCase() == '!' + 'end')
+if(message.content.toLowerCase() == '?' + 'end')
 if(message.member.roles.some(r => r.name === "Host"))
 {
     function empty() {
