@@ -578,7 +578,7 @@ client.on('message', message => {
            if (mention == null) {return;}
            
            
-           que.push(mention.displayName);
+           que.push(mention);
            message.reply('You have been added to the queue')        
             
         }
