@@ -574,7 +574,7 @@ client.on('message', message => {
    
         
         mention = message.mentions.users.first()
-        if(message.content.toLowerCase() == '!' + 'remove' + mention)
+        if(message.content.toLowerCase() == '!' + 'remove')
         if(message.member.roles.some(r => r.name === "Host")){
             if (mention == null) {return;}
             que.splice(que.indexOf(mention))
@@ -583,7 +583,7 @@ client.on('message', message => {
 
         
         
-        if(message.content.toLowerCase() == '!' + 'add' + mention){
+        if(message.content.toLowerCase() == '!' + 'add'){
             if (mention == null) {return;}
             que.push(mention);
             message.reply("You Have been added");
