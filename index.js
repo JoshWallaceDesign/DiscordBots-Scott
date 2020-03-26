@@ -497,10 +497,10 @@ client.on('message', message => {
     
        
         if(message.content.toLowerCase() == "!" + "quitevent") {
-            if(que.indexOf(message.author.username) === -1) {
-               message.reply('You are no in the list to Quit!!')
+            if(que.indexOf(message.member.displayName) === -1) {
+               message.reply('You are not in the Queue!')
             } else {
-                que.splice(que.indexOf(message.author.username), 1)
+                que.splice(que.indexOf(message.member.displayName))
                 message.reply("You Have been removed from the List");
             }
         }
@@ -572,6 +572,22 @@ client.on('message', message => {
             })
         }
    
+        if (message.author.bot) return;
+        mention = message.mentions.users.first()
+        if(message.startsWith ("!" + "remove")) {
+            if (mention == null) {return;}
+            que.splice(que.indexOf(mention))
+            message.reply("You Have been removed from the List");
+        };
+
+        if (message.author.bot) return;
+        mention = message.mentions.users.first()
+        if(message.startsWith ("!" + "add")) {
+            if (mention == null) {return;}
+            que.push(mention);
+            message.reply("You Have been added");
+        };
+
 
 if(message.content.toLowerCase() == '?' + 'end')
 if(message.member.roles.some(r => r.name === "Host"))
