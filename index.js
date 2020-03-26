@@ -593,7 +593,7 @@ client.on('message', message => {
       if (mention == null) {return;}
       let user = mention.displayName
       
-      que.splice(que.indexOf(message.member.displayName), 0)
+      que.splice(que.indexOf(user), 1)
         message.reply("You Have been removed from the List")    
        
    }  
