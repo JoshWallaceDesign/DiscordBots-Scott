@@ -575,18 +575,7 @@ client.on('message', message => {
         mention = message.mentions.members.first();
         member = message.mentions.members.first();
             
-          if(msg.startsWith ("!" + "test"))
-          
-        if (member) user = member.user;
-        {
-           if (mention == null) {return;}
-           
-           
-           que.push(user.displayName);
-           message.reply('You have been added to the queue')        
-            
-        }
-
+         
         
         
         
