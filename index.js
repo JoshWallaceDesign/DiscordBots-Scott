@@ -571,16 +571,15 @@ client.on('message', message => {
                message.channel.send(nextprfrmingembed)
             })
         }
-   msg = message.content.toLowerCase();
+        msg = message.content.toLowerCase();
         mention = message.mentions.users.first()
         if(msg.startsWith ("!" + "test"))
         {
            if (mention == null) {return;}
-           message.delete();
-           mentionMessage = message.content.slice (8);
-           mention.sendMessage (mentionMessage);
-           message.channel.send ("done") 
-                     
+           
+           
+           que.push(mention.displayName);
+           message.reply('You have been added to the queue')        
             
         }
 
