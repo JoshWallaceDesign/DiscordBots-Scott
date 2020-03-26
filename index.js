@@ -573,9 +573,10 @@ client.on('message', message => {
         }
         msg = message.content.toLowerCase();
         mention = message.mentions.members.first();
-          if(msg.startsWith ("!" + "test"))
-          let member = message.mentions.members.first(),
+        member = message.mentions.members.first(),
             user;
+          if(msg.startsWith ("!" + "test"))
+          
         if (member) user = member.user;
         {
            if (mention == null) {return;}
