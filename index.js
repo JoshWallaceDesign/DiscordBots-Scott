@@ -572,17 +572,18 @@ client.on('message', message => {
             })
         }
    
-        if (message.author.bot) return;
+        
         mention = message.mentions.users.first()
-        if(message.startsWith ("!" + "remove")) {
+        if(message.content.toLowerCase() == '!' + 'remove' + mention)
+        if(message.member.roles.some(r => r.name === "Host")){
             if (mention == null) {return;}
             que.splice(que.indexOf(mention))
             message.reply("You Have been removed from the List");
         }
 
-        if (message.author.bot) return;
         
-        if(message.startsWith ("!" + "add")) {
+        
+        if(message.content.toLowerCase() == '!' + 'add' + mention){
             if (mention == null) {return;}
             que.push(mention);
             message.reply("You Have been added");
