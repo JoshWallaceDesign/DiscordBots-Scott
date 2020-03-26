@@ -573,13 +573,13 @@ client.on('message', message => {
         }
         msg = message.content.toLowerCase();
         let mention = message.mentions.members.first();
-        let user = mention.displayName
+        
                    
           if(msg.startsWith ("!" + "test"))
      
              {
            if (mention == null) {return;}
-           
+           let user = mention.displayName
            
            que.push(user);
            message.reply(user)        
