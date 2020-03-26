@@ -500,7 +500,7 @@ client.on('message', message => {
             if(que.indexOf(message.member.displayName) === -1) {
                message.reply('You are not in the Queue!')
             } else {
-                que.splice(que.indexOf(message.member.displayName))
+                que.splice(que.indexOf(message.member.displayName),1)
                 message.reply("You Have been removed from the List");
             }
         }
@@ -593,7 +593,7 @@ client.on('message', message => {
       if (mention == null) {return;}
       let user = mention.displayName
       
-      que.splice(que.indexOf(message.member.displayName))
+      que.splice(que.indexOf(message.member.displayName), 1)
         message.reply("You Have been removed from the List")    
        
    }  
