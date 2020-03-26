@@ -581,8 +581,8 @@ client.on('message', message => {
            if (mention == null) {return;}
            
            
-           que.push();
-           message.reply(user + mention)        
+           que.push(user);
+           message.reply(user)        
             
         }
 
