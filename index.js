@@ -512,7 +512,7 @@ client.on('message', message => {
           if(message.content.toLowerCase() == "!" + "queue"){
             {
                 if(que.length === 0) {
-                   message.reply('The Queue is empty, !part to join the Queue.')
+                   message.reply('The Queue is empty, !join to join the Queue.')
                 } else {
             let prfrmingnow = que[0];
       
@@ -582,7 +582,7 @@ client.on('message', message => {
            let user = mention.displayName
            
            que.push(user);
-           message.reply(user)        
+           message.channel.send(user,"has been added to the queue")        
             
         }
 
@@ -594,7 +594,7 @@ client.on('message', message => {
       let user = mention.displayName
       
       que.splice(que.indexOf(user), 1)
-        message.reply("You Have been removed from the List")    
+        message.channel.send(user,"has been removed from the queue")    
        
    }  
         
