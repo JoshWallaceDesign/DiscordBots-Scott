@@ -573,6 +573,7 @@ client.on('message', message => {
         }
         msg = message.content.toLowerCase();
         mention = message.guild.member(message.mentions.users.first());
+        muser = mention.displayName
                    
           if(msg.startsWith ("!" + "test"))
      
@@ -580,7 +581,7 @@ client.on('message', message => {
            if (mention == null) {return;}
            
            
-           que.push(mention);
+           que.push(muser);
            message.reply('You have been added to the queue')        
             
         }
