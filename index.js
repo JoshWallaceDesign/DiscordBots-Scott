@@ -575,7 +575,7 @@ client.on('message', message => {
         let mention = message.mentions.members.first();
         
                    
-          if(msg.startsWith ("!" + "test"))
+          if(msg.startsWith ("!" + "add"))
      
              {
            if (mention == null) {return;}
@@ -587,7 +587,16 @@ client.on('message', message => {
         }
 
         
-        
+        if(msg.startsWith ("!" + "remove"))
+     
+        {
+      if (mention == null) {return;}
+      let user = mention.displayName
+      
+      que.splice(que.indexOf(message.member.displayName))
+        message.reply("You Have been removed from the List")    
+       
+   }  
         
 
 
