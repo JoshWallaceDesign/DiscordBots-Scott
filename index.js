@@ -572,10 +572,19 @@ client.on('message', message => {
             })
         }
         msg = message.content.toLowerCase();
-        mention = message.mentions.members.first();
-        member = message.mentions.members.first();
+        mention = message.guild.member(message.mentions.users.first());
+                   
+          if(msg.startsWith ("!" + "test"))
+     
+             {
+           if (mention == null) {return;}
+           
+           
+           que.push(mention);
+           message.reply('You have been added to the queue')        
             
-         
+        }
+
         
         
         
