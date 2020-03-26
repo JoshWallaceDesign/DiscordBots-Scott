@@ -578,15 +578,15 @@ client.on('message', message => {
             if (mention == null) {return;}
             que.splice(que.indexOf(mention))
             message.reply("You Have been removed from the List");
-        };
+        }
 
         if (message.author.bot) return;
-        mention = message.mentions.users.first()
+        
         if(message.startsWith ("!" + "add")) {
             if (mention == null) {return;}
             que.push(mention);
             message.reply("You Have been added");
-        };
+        }
 
 
 if(message.content.toLowerCase() == '?' + 'end')
