@@ -571,24 +571,22 @@ client.on('message', message => {
                message.channel.send(nextprfrmingembed)
             })
         }
-   
-        
-        if(message.content.toLowerCase() == '!' + 'test')
-        if(message.member.roles.some(r => r.name === "Host")){
-            let mention = message.mentions.users.first()
-            if(!mention) 
-            return message.reply("Who that user? I dunno him.")
-            
+   msg = message.content.toLowerCase();
+        mention = message.mentions.users.first()
+        if(message.startsWith ("!" + "test"))
+        {
+           if (mention == null) {return;}
+           message.delete();
+           mentionMessage = message.content.slice (8);
+           mention.sendMessage (mentionMessage);
+           message.channel.send ("done") 
+                     
             
         }
 
         
         
-        if(message.content.toLowerCase() == '!' + 'add'){
-            if (mention == null) {return;}
-            que.push(mention);
-            message.reply("You Have been added");
-        }
+        
 
 
 if(message.content.toLowerCase() == '?' + 'end')
