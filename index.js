@@ -576,7 +576,7 @@ client.on('message', message => {
         if(message.content.toLowerCase() == '!' + 'test')
         if(message.member.roles.some(r => r.name === "Host")){
             let mention = message.mentions.users.first()
-            if(mention) 
+            if(!mention) 
             return message.reply("Who that user? I dunno him.")
             
             
