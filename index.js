@@ -573,13 +573,11 @@ client.on('message', message => {
         }
    
         
-        if(message.content.toLowerCase() == '!' + 'remove')
+        if(message.content.toLowerCase() == '!' + 'test')
         if(message.member.roles.some(r => r.name === "Host")){
             let mention = message.mentions.users.first()
-            if(mention){
-                message.reply("Who that user? I dunno him.")
-            } 
-            
+            if(mention) 
+            return message.reply("Who that user? I dunno him.")
             
             
         }
