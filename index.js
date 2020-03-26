@@ -496,7 +496,7 @@ client.on('message', message => {
         }}
     
        
-        if(message.content.toLowerCase() == "!" + "quitevent") {
+        if(message.content.toLowerCase() == "!" + "leave") {
             if(que.indexOf(message.member.displayName) === -1) {
                message.reply('You are not in the Queue!')
             } else {
@@ -582,7 +582,7 @@ client.on('message', message => {
            let user = mention.displayName
            
            que.push(user);
-           message.channel.send(user,"has been added to the queue")        
+             
             
         }
 
@@ -594,7 +594,7 @@ client.on('message', message => {
       let user = mention.displayName
       
       que.splice(que.indexOf(user), 1)
-        message.channel.send(user,"has been removed from the queue")    
+       
        
    }  
         
