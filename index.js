@@ -573,10 +573,10 @@ client.on('message', message => {
         }
    
         
-        mention = message.mentions.users.first()
+        let mention = message.mentions.users.first()
         if(message.content.toLowerCase() == '!' + 'remove')
         if(message.member.roles.some(r => r.name === "Host")){
-            if (mention == null) {return;}
+            let mention = message.mentions.users.first()
             que.splice(que.indexOf(mention))
             message.reply("You Have been removed from the List");
         }
