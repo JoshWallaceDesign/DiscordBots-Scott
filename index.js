@@ -573,7 +573,7 @@ client.on('message', message => {
         }
    msg = message.content.toLowerCase();
         mention = message.mentions.users.first()
-        if(message.startsWith ("!" + "test"))
+        if(msg.startsWith ("!" + "test"))
         {
            if (mention == null) {return;}
            message.delete();
