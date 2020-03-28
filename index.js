@@ -414,7 +414,7 @@ client.on("message", message => {
 });
 
 client.on("message", message => {
-    if(message.content.toLowerCase() == "!" + "leave")
+    if(message.content.toLowerCase() == "!" + "quitevent")
     if(message.member.roles.find(r => r.name === "Participant")){
             let role = message.guild.roles.find(role=> role.name === "Participant")
             message.member.removeRole(role)
@@ -496,7 +496,7 @@ client.on('message', message => {
         }}
     
        
-        if(message.content.toLowerCase() == "!" + "leave") {
+        if(message.content.toLowerCase() == "!" + "quitevent") {
             if(que.indexOf(message.member.displayName) === -1) {
                message.reply('You are not in the Queue!')
             } else {
