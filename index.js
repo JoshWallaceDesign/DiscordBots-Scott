@@ -563,7 +563,7 @@ client.on("message", (message) => {
 
         const nextprfrmingembed = new Discord.RichEmbed()
           .setTitle("Up Next | " + nextpreformer)
-          .setColor(0x03e8fc);
+          .setColor(0x3baced);
 
         let msg = "";
 
@@ -590,7 +590,7 @@ client.on("message", (message) => {
     if (message.member.roles.some((r) => r.name === "Host")) {
       message.channel.send({
         embed: {
-          color: 0xf55742,
+          color: 0xf57e42,
           title: "Previous | " + que[0],
         },
       });
@@ -600,10 +600,10 @@ client.on("message", (message) => {
 
       const Preformingembed = new Discord.RichEmbed()
         .setTitle("Performing Now | " + prfrmingnow)
-        .setColor(0x00ae86);
+        .setColor(0xaaf542);
       const nextprfrmingembed = new Discord.RichEmbed()
         .setTitle("Up Next | " + nextpreformer)
-        .setColor(0x7289da);
+        .setColor(0x3baced);
       message.channel.send(Preformingembed).then(() => {
         message.channel.send(nextprfrmingembed);
       });
