@@ -377,7 +377,7 @@ client.on("message", (message) => {
 //--------------------
 //Playing a game :
 client.on("ready", () => {
-  let user = "Made with ESH by STeaMie";
+  let user = "ONE LOVE - ONE LANGUAGE \nBEATBOX INTERNATIONAL";
   client.user.setActivity(user);
 });
 
