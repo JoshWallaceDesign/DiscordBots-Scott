@@ -342,7 +342,7 @@ client.on("message", (message) => {
 });
 
 client.on("message", (message) => {
-  if (message.content.toLowerCase() == "!" + "timerstop") {
+  if (message.content.toLowerCase() == "!" + "stop") {
     clearInterval(clock);
     message.channel.send({
       embed: {
@@ -378,7 +378,7 @@ client.on("message", (message) => {
       embed: {
         color: 3447003,
         description:
-          "Here are the commands:\n```Coin Flip : !flip \nTimer : !timer 180, 90, 60, 45 or 30 \nStop Timer : !timerstop \nTimer commands require Timer role```",
+          "Here are the commands:\n```Coin Flip : !flip \nTimer : !timer 180, 90, 60, 45 or 30 \nStop Timer : !stop \nTimer commands require Timer role```",
       },
     });
   }
