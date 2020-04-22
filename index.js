@@ -13,7 +13,12 @@ client.on("message", (message) => {
   if (message.content.toLowerCase() == "!timer 180")
     if (message.member.roles.some((r) => r.name === "Timer")) {
       clearInterval(clock);
-      message.channel.send("180 SECONDS ON THE CLOCK");
+      message.channel.send({
+        embed: {
+          color: 0x7289da,
+          title: "180 SECONDS ON THE CLOCK",
+        },
+      });
       let timer = 180;
       clock = setInterval(() => {
         timer--;
@@ -74,7 +79,12 @@ client.on("message", (message) => {
   if (message.content.toLowerCase() == "!timer 90")
     if (message.member.roles.some((r) => r.name === "Timer")) {
       clearInterval(clock);
-      message.channel.send("90 SECONDS ON THE CLOCK");
+      message.channel.send({
+        embed: {
+          color: 0x7289da,
+          title: "90 SECONDS ON THE CLOCK",
+        },
+      });
       let timer = 90;
       clock = setInterval(() => {
         timer--;
@@ -136,7 +146,12 @@ client.on("message", (message) => {
   if (message.content.toLowerCase() == "!timer 60")
     if (message.member.roles.some((r) => r.name === "Timer")) {
       clearInterval(clock);
-      message.channel.send("60 SECONDS ON THE CLOCK");
+      message.channel.send({
+        embed: {
+          color: 0x7289da,
+          title: "60 SECONDS ON THE CLOCK",
+        },
+      });
       let timer = 60;
       clock = setInterval(() => {
         timer--;
@@ -206,7 +221,13 @@ client.on("message", (message) => {
   if (message.content.toLowerCase() == "!timer 45")
     if (message.member.roles.some((r) => r.name === "Timer")) {
       clearInterval(clock);
-      message.channel.send("45 SECONDS ON THE CLOCK");
+      message.channel.send({
+        embed: {
+          color: 0x7289da,
+          title: "45 SECONDS ON THE CLOCK",
+        },
+      });
+
       let timer = 45;
       clock = setInterval(() => {
         timer--;
@@ -367,7 +388,12 @@ function coinFlip() {
 }
 client.on("message", (message) => {
   if (message.content.toLowerCase() == "!" + "flip") {
-    message.channel.send("It's" + " " + coinFlip() + "!");
+    message.channel.send({
+      embed: {
+        color: 0x7289da,
+        title: "It's" + " " + coinFlip() + "!",
+      },
+    });
   }
 });
 //------------------------------------------------------------------
@@ -378,7 +404,7 @@ client.on("message", (message) => {
       embed: {
         color: 0x7289da,
         description:
-          "Here are the commands:\nCoin Flip : !flip \nTimer : !timer 180, 90, 60, 45 or 30 \nStop Timer : !stop \nTimer commands require Timer role!",
+          "Coin Flip : !flip \nTimer : !timer 180, 90, 60, 45 or 30 \nStop Timer : !stop \nTimer commands require Timer role!",
       },
     });
   }
@@ -531,13 +557,13 @@ client.on("message", (message) => {
 
         const Preformingembed = new Discord.RichEmbed()
           .setTitle("Performing Now | " + prfrmingnow)
-          .setColor(0x00ae86);
+          .setColor(0xaaf542);
 
         let nextpreformer = que[1];
 
         const nextprfrmingembed = new Discord.RichEmbed()
           .setTitle("Up Next | " + nextpreformer)
-          .setColor(0x7289da);
+          .setColor(0x03e8fc);
 
         let msg = "";
 
@@ -550,7 +576,7 @@ client.on("message", (message) => {
           msg += i + " | " + que[i] + ` ` + "\n"; // adds '.' and value of que[i] and adds a newline
           list.setTitle("Queue | " + que.length);
         }
-        list.setDescription(msg).setColor(9936031);
+        list.setDescription(msg).setColor(0x7289da);
 
         message.channel.send(Preformingembed).then(() => {
           message.channel.send(nextprfrmingembed);
