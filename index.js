@@ -37,7 +37,7 @@ client.on("message", (message) => {
         if (timer == 60) {
           message.channel.send({
             embed: {
-              color: 0xf5f242,
+              color: 0xf57e42,
               title: timer + " Seconds Left",
             },
           });
@@ -45,7 +45,7 @@ client.on("message", (message) => {
         if (timer == 30) {
           message.channel.send({
             embed: {
-              color: 0xf5f242,
+              color: 0xf57e42,
               title: timer + " Seconds Left",
             },
           });
@@ -98,7 +98,7 @@ client.on("message", (message) => {
         if (timer == 30) {
           message.channel.send({
             embed: {
-              color: 0xf5f242,
+              color: 0xf57e42,
               title: timer + " Seconds Left",
             },
           });
@@ -106,7 +106,7 @@ client.on("message", (message) => {
         if (timer == 15) {
           message.channel.send({
             embed: {
-              color: 0xf5f242,
+              color: 0xf57e42,
               title: timer + " Seconds Left",
             },
           });
@@ -160,7 +160,7 @@ client.on("message", (message) => {
         if (timer == 25) {
           message.channel.send({
             embed: {
-              color: 0xf5f242,
+              color: 0xf57e42,
               title: timer + " Seconds Left",
             },
           });
@@ -168,7 +168,7 @@ client.on("message", (message) => {
         if (timer == 15) {
           message.channel.send({
             embed: {
-              color: 0xf5f242,
+              color: 0xf57e42,
               title: timer + " Seconds Left",
             },
           });
@@ -239,7 +239,7 @@ client.on("message", (message) => {
         if (timer == 10) {
           message.channel.send({
             embed: {
-              color: 0xf5f242,
+              color: 0xf57e42,
               title: timer + " Seconds Left",
             },
           });
@@ -307,7 +307,7 @@ client.on("message", (message) => {
         if (timer == 15) {
           message.channel.send({
             embed: {
-              color: 0xf5f242,
+              color: 0xf57e42,
               title: timer + " Seconds Left",
             },
           });
@@ -315,7 +315,7 @@ client.on("message", (message) => {
         if (timer == 10) {
           message.channel.send({
             embed: {
-              color: 0xf5f242,
+              color: 0xf57e42,
               title: timer + " Seconds Left",
             },
           });
@@ -346,8 +346,8 @@ client.on("message", (message) => {
     clearInterval(clock);
     message.channel.send({
       embed: {
-        color: 0xf55742,
-        title: "TIMER STOPPED",
+        color: 0x7289da,
+        title: "TIMER HAS BEEN STOPPED",
       },
     });
   }
@@ -376,9 +376,9 @@ client.on("message", (message) => {
   if (message.content.toLowerCase() === "!" + "help") {
     message.channel.send({
       embed: {
-        color: 3447003,
+        color: 0x7289da,
         description:
-          "Here are the commands:\n```Coin Flip : !flip \nTimer : !timer 180, 90, 60, 45 or 30 \nStop Timer : !stop \nTimer commands require Timer role```",
+          "Here are the commands:\nCoin Flip : !flip \nTimer : !timer 180, 90, 60, 45 or 30 \nStop Timer : !stop \nTimer commands require Timer role!",
       },
     });
   }
@@ -437,7 +437,7 @@ client.on("message", (message) => {
 });
 
 client.on("message", (message) => {
-  if (message.content.toLowerCase() == "!" + "quitevent")
+  if (message.content.toLowerCase() == "!" + "quit")
     if (message.member.roles.find((r) => r.name === "Participant")) {
       let role = message.guild.roles.find(
         (role) => role.name === "Participant"
@@ -455,7 +455,7 @@ client.on("message", (message) => {
         message.guild.roles.get(roleID).members.map((m) => m.displayName);
         message.channel.send({
           embed: {
-            color: 3447003,
+            color: 0x7289da,
             title: `Participants | ${membersWithRole.size}`,
             description: message.guild.roles
               .get(roleID)
@@ -471,7 +471,7 @@ client.on("message", (message) => {
         message.guild.roles.get(roleID).members.map((m) => m.displayName);
         message.channel.send({
           embed: {
-            color: 3447003,
+            color: 0x7289da,
             title: `Participants | ${membersWithRole.size}`,
             description: message.guild.roles
               .get(roleID)
@@ -513,7 +513,7 @@ client.on("message", (message) => {
     }
   }
 
-  if (message.content.toLowerCase() == "!" + "quitevent") {
+  if (message.content.toLowerCase() == "!" + "quit") {
     if (que.indexOf(message.member.displayName) === -1) {
       message.reply("You are not in the Queue!");
     } else {
@@ -537,7 +537,7 @@ client.on("message", (message) => {
 
         const nextprfrmingembed = new Discord.RichEmbed()
           .setTitle("Up Next | " + nextpreformer)
-          .setColor(3447003);
+          .setColor(0x7289da);
 
         let msg = "";
 
@@ -577,7 +577,7 @@ client.on("message", (message) => {
         .setColor(0x00ae86);
       const nextprfrmingembed = new Discord.RichEmbed()
         .setTitle("Up Next | " + nextpreformer)
-        .setColor(3447003);
+        .setColor(0x7289da);
       message.channel.send(Preformingembed).then(() => {
         message.channel.send(nextprfrmingembed);
       });
