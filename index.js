@@ -549,12 +549,8 @@ client.on("message", (message) => {
       message.reply("You are not in the Queue!");
     } else {
       que.splice(que.indexOf(message.member.displayName), 1);
-      message.reply({
-        embed: {
-          color: 0xf57e42,
-          description: "You Have been removed from the List",
-        },
-      });
+
+      message.reply("You Have been removed from the List");
     }
   }
 
