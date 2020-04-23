@@ -625,7 +625,12 @@ client.on("message", (message) => {
       return;
     }
     let user = mention.displayName;
-
+    message.channel.send({
+      embed: {
+        color: 0xf57e42,
+        title: user + "was removed from the Queue ",
+      },
+    });
     que.splice(que.indexOf(user), 1);
   }
 
