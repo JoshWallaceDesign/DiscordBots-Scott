@@ -423,7 +423,12 @@ client.on("message", (message) => {
       empty();
 
       unlocked = true;
-      message.reply("The Queue is now open, type !join to part!");
+      message.channel.send({
+        embed: {
+          color: 0x7289da,
+          description: "The Queue is now open, type !join to part!",
+        },
+      });
     }
 });
 
@@ -544,7 +549,12 @@ client.on("message", (message) => {
       message.reply("You are not in the Queue!");
     } else {
       que.splice(que.indexOf(message.member.displayName), 1);
-      message.reply("You Have been removed from the List");
+      message.channel.send({
+        embed: {
+          color: 0xf57e42,
+          description: "You Have been removed from the List",
+        },
+      });
     }
   }
 
@@ -616,7 +626,12 @@ client.on("message", (message) => {
       return;
     }
     let user = mention.displayName;
-
+    message.channel.send({
+      embed: {
+        color: 0xaaf542,
+        title: user + " has been added to the Queue ",
+      },
+    });
     que.push(user);
   }
 
@@ -628,7 +643,7 @@ client.on("message", (message) => {
     message.channel.send({
       embed: {
         color: 0xf57e42,
-        title: user + "was removed from the Queue ",
+        title: user + " has been removed from the Queue ",
       },
     });
     que.splice(que.indexOf(user), 1);
