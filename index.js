@@ -468,7 +468,7 @@ client.on("message", (message) => {
 });
 
 client.on("message", (message) => {
-  if (message.content.toLowerCase() == "!" + "quit")
+  if (message.content.toLowerCase() == "!" + "quitit")
     if (message.member.roles.find((r) => r.name === "Participant")) {
       let role = message.guild.roles.find(
         (role) => role.name === "Participant"
@@ -544,7 +544,7 @@ client.on("message", (message) => {
     }
   }
 
-  if (message.content.toLowerCase() == "!" + "quit") {
+  if (message.content.toLowerCase() == "!" + "quitit") {
     if (que.indexOf(message.member.displayName) === -1) {
       message.reply("You are not in the Queue!");
     } else {
